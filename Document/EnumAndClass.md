@@ -1,4 +1,5 @@
 <a href="#" id="top">Swift 基础语法 - [枚举和类]</a>
+----
 ```Swift
 #if os(Linux)
   import Glibc
