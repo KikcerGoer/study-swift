@@ -147,4 +147,25 @@ for (key, value) in mutableDict
     print(key)
     print(value)
 }
+/******* 可选绑定 option? ****/
+// 用可选绑定(optional binding)来判断可选类型是否包含值 如果有值就赋值给临时常量或变量
+
+var optioalName:String?
+
+var greeting = "Hello"
+
+optioalName = "Hillary Cliton"
+
+if let name = optioalName {
+    greeting = "\(greeting),\(name)";
+    print(greeting)
+}else{
+    print("optioalName is nil")
+}
+
+
+var hi = optioalName!; //拆包
+
+print(hi)
+
 ```
