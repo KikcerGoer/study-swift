@@ -147,6 +147,7 @@ for (key, value) in mutableDict
     print(key)
     print(value)
 }
+
 /******* 可选绑定 option? ****/
 // 用可选绑定(optional binding)来判断可选类型是否包含值 如果有值就赋值给临时常量或变量
 
@@ -167,5 +168,47 @@ if let name = optioalName {
 var hi = optioalName!; //拆包
 
 print(hi)
+
+/* Optional (理解 ?  !)
+   Swift语言使用 var 定义变量，但Swift不会自动给变量赋初始值
+   因此变量不会有默认值，所以使用变量之前必须对其初始化
+   使用变量之前不进行初始化就会编译报错
+   可以避免发生因为使用了未初始化的值而引发的潜在的运行时错误
+ */
+
+// ?表示变量可能有值，也可能是 nil (空对象) -- 类似NULL(空指针)
+// 声明?之后，变量就成为了optional types(可选类型)
+// 即对变量打包，提取值时需要拆包操作
+
+var strValue:String?
+
+if strValue != nil{
+    print(strValue!)
+}else{
+    print("nil value")
+}
+
+
+if let hashValue = strValue?.hashValue  {
+    // do what you need to do here
+    print(hashValue)
+} else {
+    //strValue is nil
+    print(hashValue)
+}
+
+strValue = "12345"
+let integer = Int(strValue!) //拆包
+
+/*
+ Optional其实是个enum(枚举)，里面有None和Some两种类型
+ 其实所谓的 nil 就是Optional.None, 非nil就是Optional.Some
+ 通过Some(T)包装原始值
+ 在使用Optional的时候要拆包（从enum里取出来原始值）
+ 
+ 在很多方法（如：类的初始化方法）中也会用到? , 表示此方法返回值可能为nil
+ */
+
+
 
 ```
