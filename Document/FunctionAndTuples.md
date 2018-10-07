@@ -1,4 +1,4 @@
-<a href="#" id="top"> Swift 基础语法-[函数与数组]</a>
+<a href="#" id="top"> Swift 基础语法-[函数与元组]</a>
 --------
 ```Swift
 //: Playground - noun: a place where people can play
