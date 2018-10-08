@@ -15,7 +15,7 @@ import Foundation
  ss：2 个数字表示的秒。
  zzz：3 个字母表示的时区（如 GMT）。
  GGG：BC 或者 AD。
-
+ aaa:上午下午
  */
 
 // 获取当前时间 Date 对象：
