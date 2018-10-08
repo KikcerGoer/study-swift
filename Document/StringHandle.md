@@ -35,5 +35,4 @@ print(re_str)
 
 从文件初始化   String(contentsOfFile: )
 保存到文件    write(toFile:   )
-
 ```
