@@ -1,4 +1,4 @@
-  <a href="#" id="top">Swift基础语法--[沙盒处理]</a>
+  <a href="#" id="top">Swift基础语法--[沙盒处理下载保存图片和json]</a>
   -----
   ```Swift
   //: Playground - noun: a place where people can play
@@ -80,5 +80,67 @@ let ar_read = NSArray.init(contentsOfFile: filePath)! as Array
 
 print(ar_read)
 
-/*  3.  归档存储，获取数据     */
+
+/* 下载图片 一定有下载和读取 下面上代码先来下载 */
+
+
+let url = URL(string:"https://goss.veer.com/creative/vcg/veer/800water/veer-145757956.jpg")
+
+let data = try! Data(contentsOf:url!)
+
+let img = UIImage(data:data)
+
+func  saveImage(currentImage: UIImage, persent: CGFloat, imageName: String){
+    if let imageData = UIImageJPEGRepresentation(currentImage, persent) as NSData? {
+        let fullPath = NSHomeDirectory().appending("/Documents/").appending(imageName)
+        imageData.write(toFile: fullPath, atomically: true)
+        print("fullPath=\(fullPath)")
+    }
+}
+saveImage(currentImage: img!, persent: 1, imageName: "999.jpg")
+
+
+let aDic = ["key1":100, "key2":"一天"] as [String : Any]
+
+// 判断是否能够转换
+
+if !JSONSerialization.isValidJSONObject(aDic){
+    print("不能转换")
+}
+
+
+do {
+    
+    let jsonData = try JSONSerialization.data(withJSONObject: aDic, options: [])
+    let dic = try JSONSerialization.jsonObject(with: jsonData, options:.allowFragments)
+    print(dic)
+}
+catch {
+    print(error)
+}
+
+//解析json
+enum MyError:Error {
+    case Zero
+    case NotURL
+}
+guard let weatherUrl = URL(string: "http://www.weather.com.cn/data/cityinfo/101010100.html") else{
+    throw MyError.NotURL
+}
+
+let jsondata = try! Data(contentsOf: weatherUrl)
+
+let json = try! JSONSerialization.jsonObject(with: jsondata, options: .allowFragments)
+guard let dic = json as? [String:Any] else{
+    throw MyError.NotURL
+}
+guard let weather = dic["weatherinfo"] as? [String:String] else{
+    throw MyError.NotURL
+}
+let temp1 = weather["temp1"]
+let temp2 = weather["temp2"]
+
+print(weather)
+
+
   ```
