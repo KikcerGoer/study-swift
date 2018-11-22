@@ -1,4 +1,8 @@
-//实验4 a
+import UIKit
+import PlaygroundSupport
+
+
+// 实验4 (1)文件缓存处理
 /*
  a)判断沙盒的Document目录下是否存在某文件夹，如果没有则新建一个该文件夹；
  */
@@ -23,7 +27,6 @@ CreateDirectoryAtDocuments("www")
 
 print("是否存在文件 www: \(DocumentsIsHaveDirectory("www"))" )
 
-//实验4 b
 /*
  b)判断是否该文件夹下存在一个图片文件，如果存在该文件，读取该文件到一个图片对象中并进行显示，如
  果不存在则从网上下载一张图片并保存到该图片文件中；
@@ -69,3 +72,77 @@ if isOk{
 } else {
     print("存储失败")
 }
+
+// 实验4 (2)自定制视图
+/*
+a)从UIView中派生一个自定制的View；
+b)绘制一个椭圆（或则自己喜欢的任何图形）；
+c)新建视图对象并进行显示；
+*/
+class MyView:UIView{
+    override func draw(_ rect: CGRect) {
+        let path = UIBezierPath(ovalIn:rect)
+        UIColor.red.setStroke()
+        path.stroke()
+        
+        UIColor.gray.setFill()
+        path.fill();
+    }
+}
+
+
+class TriangleView:UIView{
+    override func draw(_ rect: CGRect) {
+        let path = UIBezierPath();
+        
+        path.move(to: CGPoint(x:rect.size.width/2,y:0));
+        path.addLine(to: CGPoint(x:rect.size.width,y:rect.size.height))
+        path.addLine(to: CGPoint(x:0,y:rect.size.height))
+        
+        UIColor.green.setFill()
+        path.fill()
+    }
+}
+
+
+
+let vw = MyView();
+
+vw.draw(CGRect(x:0,y:0,width:200,height:100))
+
+class Controller:UIViewController{
+    var lable:UILabel!
+    var circleView:MyView!
+    var tangleView:TriangleView!
+    override func loadView() {
+        view = UIView(frame:CGRect(x:0,y:0,width:400,height:800));
+        view.backgroundColor = UIColor.white;
+        
+        
+        lable = UILabel(frame:CGRect(x:50,y:100,width:300,height:50))
+        lable.backgroundColor = UIColor.blue
+        lable.textColor = UIColor.white
+        lable.textAlignment  = .center
+        lable.text = "hello the laji yu yan swift"
+        
+        view.addSubview(lable)
+        
+        circleView = MyView(frame:CGRect(x:100,y:400,width:200,height:200))
+        circleView.backgroundColor = UIColor.green
+        
+        view.addSubview(circleView)
+        
+        
+        tangleView = TriangleView(frame:CGRect(x:100,y:180,width:200,height:200))
+        tangleView.backgroundColor = UIColor.red
+        
+        view.addSubview(tangleView)
+        
+    }
+    
+}
+
+let ct = Controller()
+
+PlaygroundPage.current.liveView = ct
+
