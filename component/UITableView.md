@@ -5,6 +5,8 @@
 
 ##### [尺寸属性](#top)
 * `Row Height`:`每一个tableview cell的高度`
+##### [重要方法](#top)
+* `reloadData()`:`刷新 重新加载数据`
 ```swift
 //
 //  animalTableViewControler.swift
