@@ -7,7 +7,7 @@ import Cocoa
     import Darwin
 #endif
 
-/*
+
 var emptyArray:Array = [Int]()
 emptyArray.append(1)
 emptyArray.append(2)
@@ -47,8 +47,7 @@ emptyArray.sort(by:sortself)
 emptyArray.sort(by:{(one:Int,two:Int) in return one > two })
 print(emptyArray)
 emptyArray.sort(by: > )
-*/
-/*
+
 var array = [10,4,2,11,65]
 let temp = array.reduce(
  (max:Int.min,min:Int.max,sum:0)
@@ -59,7 +58,7 @@ let temp = array.reduce(
     return (max(temp.max,i),min(temp.min,i),temp.sum+i)
 }
 
-*/
+
 
 enum department:Int{
     case sicnu_jisuanjikexuexueyuan = 1
